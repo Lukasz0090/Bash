@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Bash</title>
+</h:head>
+<h:body>
+	<h2>Bash</h2>
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+
+			<p:menuitem value="Nowy Cytat" url="/pages/new.jsf"
+				icon="ui-icon-document" />
+			<p:submenu label="Lista cytatów" icon="ui-icon-pencil">
+				<p:menuitem value="Ocenione pozytywnie" url="/pages/home.jsf" />
+				<p:menuitem value="Ocenione negatywnie" url="/pages/negative.jsf" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<!-- input textarea -->
+	<h:form>
+
+		<br />
+		<h3>Nowy cytat</h3>
+
+		<p:inputTextarea rows="13" cols="40" counter="display" maxlength="500"
+			counterTemplate="{0} pozostało znaków." autoResize="false" id="content" value="#{saveData.content}" />
+		<h:outputText id="display" /><br />
+		<h:commandButton value="Zapisz cytat" action="#{saveData.saveQuotation}"/>
+
+	</h:form>
+
+
+
+</h:body>
+</html>

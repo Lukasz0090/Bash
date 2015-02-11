@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Bash</title>
+</h:head>
+<h:body>
+	<h2>Bash</h2>
+	<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+
+			<p:menuitem value="Nowy Cytat" url="/pages/new.jsf"
+				icon="ui-icon-document" />
+			<p:submenu label="Lista cytatów" icon="ui-icon-pencil">
+				<p:menuitem value="Ocenione pozytywnie" url="/pages/home.jsf" />
+				<p:menuitem value="Ocenione negatywnie" url="/pages/negative.jsf" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+	<!-- #{personController.napis} -->
+	<p:dataList value="#{quotationController.quotations}" var="q"
+		type="definition">
+		<h:form>
+			<p:growl id="msgs" showDetail="true" />
+			<p:panel id="custom" header="#  #{q.id}" style="margin-bottom:20px" >
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:outputText value=" #{q.content}" />
+				</h:panelGrid>
+
+				<f:facet name="actions">
+				<h:outputLabel value="#{q.rate}" style="margin-left:30px" />
+					<p:commandButton style="margin-left:50px" value="+"  action="#{saveData.addRate(q.id)}"></p:commandButton>
+					<p:commandButton value="-" action="#{saveData.addRate(q.id)}"></p:commandButton>
+					<h:outputLabel value="#{q.date}" style="float:right" />
+					
+					
+					
+				</f:facet>
+			</p:panel>
+
+
+		</h:form>
+
+		<!--   #{q.content} -->
+	</p:dataList>
+
+</h:body>
+</html>

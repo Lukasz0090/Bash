@@ -1,0 +1,5 @@
+pl\bash\controllers\PersonController.class
+pl\bash\Main.class
+pl\bash\entity\Person.class
+pl\bash\dao\PersonDao.class
+pl\bash\entity\Quotation.class
